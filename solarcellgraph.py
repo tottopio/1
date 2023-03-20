@@ -3,6 +3,7 @@ import os, tkinter, tkinter.filedialog, tkinter.messagebox
 import numpy as np 
 import pandas as pd 
 import matplotlib.pyplot as plt
+
 # ファイル選択ダイアログの表示 
 root = tkinter.Tk() 
 root.withdraw() 
@@ -10,11 +11,13 @@ root.withdraw()
 # ファイルの拡張子　
 fTyp = [("","*")] 
 fTyp = [("csv-file","*.csv"), ("All-file","*")] 
+
 # フォルダパスを取得 
 iDir = os.path.abspath(os.path.dirname(__file__)) 
 tkinter.messagebox.showinfo('プログラム','ファイルを選択してください！') 
 file = tkinter.filedialog.askopenfilename(filetypes = fTyp,initialdir = iDir) 
 print(file) 
+
 # ファイルパスの認識 
 file1 = file.replace('/', os.sep) 
 file_name = os.path.basename(file) 
@@ -26,7 +29,8 @@ print(file_name)
 df = pd.read_csv(file_name, names=("Time","V","A"),skiprows=4,usecols=[0,1,2])#csvデータ読み込み
 df= df.query("A <=0")
 
-print(df)#読み込んだデータの確認表示用  
+#読み込んだデータの確認表示用 
+print(df) 
 
 # mAをAに変換するやつ
 def double_then_minus_5(x):
@@ -81,9 +85,5 @@ xmin, xmax = -5, 2
 ymin, ymax = -20, 25
 plt.hlines(0, xmin, xmax, colors='black')
 plt.vlines(0, ymin, ymax, colors='black')
-
-
-
-
 
 plt.show()
