@@ -26,8 +26,9 @@ print(file_name)
 df = pd.read_csv(file_name, names=("Time","V","A"),skiprows=4,usecols=[0,1,2])#csvデータ読み込み
 df= df.query("A <=0")
 
-print(df)#読み込んだデータを表示  
+print(df)#読み込んだデータの確認表示用  
 
+# mAをAに変換するやつ
 def double_then_minus_5(x):
     x *= -1000
     x /= 0.1
@@ -50,6 +51,7 @@ num = 0 # 値の指定
 index1 = np.abs(x - num).argsort()[0].tolist()
 index2 = np.abs(y - num).argsort()[0].tolist()
 
+# 確認用
 print("index number1: ", index1,"index number2: ", index2)
 
 maxA=df['A'].max()
@@ -58,7 +60,7 @@ maxW=df['W'].max()
 FF=maxW/(maxA*maxV)
 nn=(maxW/100)*100
 
-
+#　確認用
 print({'開放電圧': maxV, '短絡電流': maxA, 'FF': FF, '変換効率': nn})
 
 #グラフ化 
