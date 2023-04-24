@@ -16,7 +16,8 @@ pandasを使うのが初めてで周りに知っている人もいなかった�
 
 #### 必要パッケージのインストール
 ```
-pip install pyautogui
-pip install tqdm
-pip install opencv_python
+pip install matplotlib
+pip install pandas
+pip install numpy
+
 ```
